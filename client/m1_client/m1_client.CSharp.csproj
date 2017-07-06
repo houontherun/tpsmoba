@@ -17,7 +17,8 @@
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,6 +90,9 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Command\SocketCommand.cs" />
     <Compile Include="Assets\Script\Command\StartUpCommand.cs" />
+    <Compile Include="Assets\Script\Common\BETween.cs" />
+    <Compile Include="Assets\Script\Common\Singleton.cs" />
+    <Compile Include="Assets\Script\Common\SingletonBehaviour.cs" />
     <Compile Include="Assets\Script\Component\BezierComp.cs" />
     <Compile Include="Assets\Script\ConstDefine\AppConst.cs" />
     <Compile Include="Assets\Script\ConstDefine\Helper.cs" />
@@ -126,7 +130,6 @@
     <Compile Include="Assets\Script\Manager\ObjectPoolManager.cs" />
     <Compile Include="Assets\Script\Manager\ResDefine.cs" />
     <Compile Include="Assets\Script\Manager\ResourceManager.cs" />
-    <Compile Include="Assets\Script\Manager\Singleton.cs" />
     <Compile Include="Assets\Script\Manager\ThreadManager.cs" />
     <Compile Include="Assets\Script\Manager\TimerManager.cs" />
     <Compile Include="Assets\Script\Manager\Util.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Assets\Script\network\MsgInterval.cs" />
     <Compile Include="Assets\Script\network\Protocal.cs" />
     <Compile Include="Assets\Script\network\SocketClient.cs" />
+    <Compile Include="Assets\Script\UI\MainnScreenUI.cs" />
     <Compile Include="Assets\ThirdParty\NavMeshEx\Script\NavMeshObject.cs" />
     <Compile Include="Assets\ThirdParty\NavMeshExtension\Scripts\AgentAnimator.cs" />
     <Compile Include="Assets\ThirdParty\NavMeshExtension\Scripts\AgentController.cs" />
@@ -209,5 +213,5 @@
     <None Include="Assets\ThirdParty\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\ThirdParty\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
