@@ -1,0 +1,45 @@
+﻿Thanks for buying this asset !
+If you like it, please rate, it will help me create more awesome assets :) 
+
+Models:
+This package contain 5 soldiers sharing same model with 5 guns.
+Models are skinned with animations. 
+Models have BlendShapes - you can change characters fatness form 0 (fat) to 100 (skinny) in Skinned Mesh Renderer component 
+
+Shaders and materials:
+There is 3 material types:
+- Unity Standard Reflective Material using diffuse and normal map textures.
+- DESGN Material using diffuse, emissive, specular, glossines, normal map textures.
+- Customizable Material using diffuse, mask, emissive, specular, glossines, normal map. You can change 3 colors in material editor.
+
+Animations:
+Two types: legacy and humanoid,
+30 animations:
+● RunForward, RunRight, RunLeft, RunBack
+● Sprint
+● RunForwardShoot, RunRightShoot, RunLeftShoot, RunBackShoot
+● Idle 
+● Idle2
+● Shoot 
+● JumpAndShoot (start,loop,end) 
+● Jump (start,loop,end)
+● GetCover (start,loop,end)
+● ShootFromCover 
+● RollFront, RollBack, RollLeft, RollRight
+● Lying 
+● LyingShoot 
+● CrawlingFront, CrawlingRight, CrawlingLeft, CrawlingBack 
+● ReloadWeapon  
+● Damage
+● Death1 
+● Death2
+
+Particles:
+There is 1 particle effect for shooting. You have to play this particle on "shooting" event. 
+
+If you have any question or request, please send me a email :)
+3dasset@gmail.com
+
+Thanks !
+Dominic 
+
