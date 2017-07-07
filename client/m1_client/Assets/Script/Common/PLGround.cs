@@ -14,12 +14,14 @@ public class PLGround : SingletonBehaviour<PLGround>
     private Vector2 UnitSize = Vector2.one;
     private Vector3 plOriginRoot = new Vector3(0,0,0);
     private Vector2 GridSize;
-
-    public Cell[,] Cells;
+    public int SubGridSize = 2;	//用于A*寻路的子网格
+    public PLAStar AStar;	
+    private Dictionary<Vector2, Cell> Cells = new Dictionary<Vector2, Cell>();
 
 	public void Init()
     {
-
+        Cells.Clear();
+        AStar.Init((int)GridSize.x * SubGridSize, (int)GridSize.y * SubGridSize, 1.0f / (float)SubGridSize);
     }
 
     private Vector2 GetStartPos()
@@ -33,6 +35,19 @@ public class PLGround : SingletonBehaviour<PLGround>
     public void Move(GameObject go, Vector2 tilePos)
     {
         Move(go, tilePos, Vector2.one);
+
+        if (AStar.tiles != null)
+        {
+            int asx = SubGridSize * ((int)tilePos.x);
+            int asy = SubGridSize * ((int)tilePos.y);
+            for (int yy = 0; yy < SubGridSize; ++yy)
+            {
+                for (int xx = 0; xx < SubGridSize; ++xx)
+                {
+
+                }
+            }
+        }
     }
 
     //考虑到可扩展性 tileSize参数表示元素占用格子大小
@@ -51,6 +66,7 @@ public class PLGround : SingletonBehaviour<PLGround>
             go.transform.position = localPos;
             go.transform.rotation = transform.rotation;
         }
+       
     }
 
     private void AddCellsGround()
