@@ -33,16 +33,38 @@ public class TableData
 
     public static void PreInit()
     {
-        pSceneTableInfo = AsyncLoadTable<SceneTable>();
+        pSceneTableInfo = AsyncLoadTable<SceneTableConfig>();
+        pSceneEleTableInfo = AsyncLoadTable<SceneElementTableConfig>();
     }
 
     public static void Init(Action kCallBack)
     {
         PreInit();
+        LoadData kLoadData = null;
+        for (int iIdx = 0; iIdx < m_kLoadData.Count; iIdx++)
+        {
+            kLoadData = m_kLoadData[iIdx];
+            MethodInfo kMethodInfo = kLoadData.kType.GetMethod("Load", BindingFlags.Instance | BindingFlags.Public);
+            try
+            {
+                kMethodInfo.Invoke(kLoadData.kObj, new object[] { kLoadData.text });
+            }
+            catch (System.Exception ex)
+            {
+                LogCenter.LogError("json Load Err: [" + kLoadData.kType.ToString() + "]----->" + ex.Message);
+                
+            }
+        }
+        m_kLoadData.Clear();
+        if (kCallBack != null)
+        {
+            kCallBack();
+        }
     }
 
-    static SceneTable pSceneTableInfo = null;
-    public static SceneTable PSceneTableInfo
+
+    static SceneTableConfig pSceneTableInfo = null;
+    public static SceneTableConfig PSceneTableInfo
     {
         get
         {
@@ -50,8 +72,8 @@ public class TableData
         }
     }
 
-    static SceneElementTable pSceneEleTableInfo = null;
-    public static SceneElementTable PSceneEleTableInfo
+    static SceneElementTableConfig pSceneEleTableInfo = null;
+    public static SceneElementTableConfig PSceneEleTableInfo
     {
         get
         {

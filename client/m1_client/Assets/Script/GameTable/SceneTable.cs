@@ -155,4 +155,12 @@ namespace Table
         /// </summary>
         public int X36 { get; set; }
     }
+
+    public class SceneTableConfig
+    {
+        public string GetJsonName()
+        {
+            return "SceneTable";
+        }
+    }
 }

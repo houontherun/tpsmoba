@@ -35,4 +35,12 @@ namespace Table
         /// </summary>
         public int Invisible { get; set; }
     }
+
+    public class SceneElementTableConfig
+    {
+        public string GetJsonName()
+        {
+            return "SceneElementTable";
+        }
+    }
 }
