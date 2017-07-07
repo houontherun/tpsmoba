@@ -107,7 +107,7 @@ def safe_data_convert(data, type_name):
             err_msg = "非bool型数据: " + data
     elif type_name == "string":
         try:
-            new_data = unicode(data).replace('"', '\\"')
+            new_data = data.replace('"', '\\"')
             new_data = "\"" + new_data + "\""
         except:
             is_match = False
