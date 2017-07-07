@@ -333,7 +333,7 @@ if __name__ == "__main__":
     sys.setdefaultencoding('utf-8')
 
     data_folder = "..\\excel_files"
-    lua_folder = "..\\lua_files"
+    lua_folder = "..\\json_files"
     json_path = "..\\excel_files\\md5.json"
 
     read_md5(json_path)
