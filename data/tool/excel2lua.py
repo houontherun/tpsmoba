@@ -114,7 +114,7 @@ def safe_data_convert(data, type_name):
             err_msg = "非string型数据: " + data
     elif type_name == "list_int":
         if data == "":
-            new_data = "{"
+            new_data = "["
         elif isinstance(data, str) or isinstance(data, unicode):
             data = data.replace('=', '|')
             split_str = data.split('|')
@@ -122,24 +122,25 @@ def safe_data_convert(data, type_name):
                 try:
                     split_str[index] = str(int(item))
                     if new_data is None:
-                        new_data = "{"
+                        new_data = "["
                     new_data += split_str[index]
                     new_data += ", "
                 except:
                     is_match = False
                     err_msg = "list_int必须为‘|’隔开的整数: " + data
                     break
+            new_data = new_data[:-2]
         else:
-            new_data = "{"
+            new_data = "["
             try:
                 new_data += str(int(data))
             except:
                 is_match = False
                 err_msg = "list_int:非int型数据: " + data
-        new_data += "}"
+        new_data += "]"
     elif type_name == "list_float":
         if data == "":
-            new_data = "{"
+            new_data = "["
         elif isinstance(data, str) or isinstance(data, unicode):
             data = data.replace('=', '|')
             split_str = data.split('|')
@@ -147,21 +148,22 @@ def safe_data_convert(data, type_name):
                 try:
                     split_str[index] = str(float(item))
                     if new_data is None:
-                        new_data = "{"
+                        new_data = "["
                     new_data += split_str[index]
                     new_data += ", "
                 except:
                     is_match = False
                     err_msg = "list_int必须为‘|’隔开的浮点数: " + data
                     break
+            new_data = new_data[:-2]
         else:
-            new_data = "{"
+            new_data = "["
             try:
                 new_data += str(float(data))
             except:
                 is_match = False
                 err_msg = "list_float:非float型数据: " + data
-        new_data += "}"
+        new_data += "]"
     else:
         is_match = False
         err_msg = "错误的数据类型: " + type_name

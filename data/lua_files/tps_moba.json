@@ -5424,14 +5424,14 @@
         "1" : { 
             "Copy" : "S1",
             "Playing" : "A",
-            "BirthPoint1" : {18, 1, 17, 1, 19, 1, },
-            "BirthPoint2" : {18, 64, 17, 64, 19, 64, }
+            "BirthPoint1" : [18, 1, 17, 1, 19, 1],
+            "BirthPoint2" : [18, 64, 17, 64, 19, 64]
         },
         "2" : { 
             "Copy" : "S2",
             "Playing" : "B",
-            "BirthPoint1" : {18, 1, 17, 1, 19, 1, },
-            "BirthPoint2" : {18, 64, 17, 64, 19, 64, }
+            "BirthPoint1" : [18, 1, 17, 1, 19, 1],
+            "BirthPoint2" : [18, 64, 17, 64, 19, 64]
         }
     },
 
@@ -5440,121 +5440,121 @@
             "RankLevel" : 1,
             "Cups" : 0,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "2" : { 
             "RankLevel" : 2,
             "Cups" : 10,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "3" : { 
             "RankLevel" : 3,
             "Cups" : 20,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "4" : { 
             "RankLevel" : 4,
             "Cups" : 30,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "5" : { 
             "RankLevel" : 5,
             "Cups" : 40,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "6" : { 
             "RankLevel" : 6,
             "Cups" : 60,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "7" : { 
             "RankLevel" : 7,
             "Cups" : 80,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "8" : { 
             "RankLevel" : 8,
             "Cups" : 100,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "9" : { 
             "RankLevel" : 9,
             "Cups" : 120,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "10" : { 
             "RankLevel" : 10,
             "Cups" : 140,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "11" : { 
             "RankLevel" : 11,
             "Cups" : 160,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "12" : { 
             "RankLevel" : 12,
             "Cups" : 180,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "13" : { 
             "RankLevel" : 13,
             "Cups" : 220,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "14" : { 
             "RankLevel" : 14,
             "Cups" : 260,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "15" : { 
             "RankLevel" : 15,
             "Cups" : 300,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "16" : { 
             "RankLevel" : 16,
             "Cups" : 340,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "17" : { 
             "RankLevel" : 17,
             "Cups" : 380,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "18" : { 
             "RankLevel" : 18,
             "Cups" : 420,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "19" : { 
             "RankLevel" : 19,
             "Cups" : 460,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         },
         "20" : { 
             "RankLevel" : 20,
             "Cups" : 500,
             "Icon" : 0,
-            "Reward1" : {}
+            "Reward1" : []
         }
     },
 
