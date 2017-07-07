@@ -33,6 +33,7 @@ public class Cell : Entity
     public bool bDestoryBySkill = false; //是否被技能摧毁
     public float fRecoveryTime = 0f;
     public bool bSteralth = false;       //是否隐身
+    public Vector2 vTilePos = new Vector2(0, 0);		// 在网格中的位置
 }
 
 public class Grass : Cell  //草元素
