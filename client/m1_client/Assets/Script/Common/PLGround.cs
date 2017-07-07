@@ -104,4 +104,26 @@ public class PLGround : SingletonBehaviour<PLGround>
 
         return localPos;
     }
+
+
+    // 通过地形中的物体得到A*网格
+    public AStarTile GetBuidingAStarTile(Cell building)
+    {
+        int x = (int)building.vTilePos.x * SubGridSize;
+        int y = (int)building.vTilePos.y * SubGridSize;
+        return AStar.tiles[x, y];
+    }
+
+    //通过位置得到场景元素
+    public Cell GetCell(Vector2 vecPos)
+    {
+        Cell cell = null;
+        if(Cells.TryGetValue(vecPos,out cell))
+        {
+            return cell;
+        }
+
+        return cell;
+
+    }
 }
