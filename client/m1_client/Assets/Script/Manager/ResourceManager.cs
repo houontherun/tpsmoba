@@ -158,6 +158,29 @@ public class ResourceManager : Manager
         //    return ObjectPoolManager.GetSharedResource(res, EResType.eResMaterial) as Material;
     }
 
+    public static string GetText(string res)
+    {
+        TextAsset textAsset = null;
+        string text = string.Empty;
+        if (AppConst.PublishMode)
+        {
+            textAsset = ObjectPoolManager.GetSharedResource(res, EResType.eResDataTable,false) as TextAsset;
+        }
+        else
+        {
+#if UNITY_EDITOR
+            textAsset = Resources.Load<TextAsset>("DataTable/" + res + ".json");
+#endif
+        }
+        if (textAsset!=null)
+        {
+            text = textAsset.text;
+        }
+
+        return text;
+        //    return ObjectPoolManager.GetSharedResource(res, EResType.eResMaterial) as Material;
+    }
+
     public static bool RecycleObject(GameObject go)
     {
         return ObjectPoolManager.RecycleObject(go);

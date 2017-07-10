@@ -158,9 +158,44 @@ namespace Table
 
     public class SceneTableConfig
     {
-        public string GetJsonName()
+        public string GetTableName()
         {
             return "SceneTable";
         }
+
+        public bool Load(string text)
+        {
+            m_kDatas = JsonHelp.ReadFromJsonString<SceneTable[]>(text);
+            foreach (var item in m_kDatas)
+            {
+                m_kMapDatas.Add(item.Y, item);
+            }
+            return true;
+        }
+
+        public SceneTable Get(int iID)
+        {
+            SceneTable rkRet = null;
+            if (!m_kMapDatas.TryGetValue(iID, out rkRet))
+            {
+                return null;
+            }
+            return rkRet;
+        }
+
+
+        public SceneTable At(int index)
+        {
+            return m_kDatas[index];
+        }
+
+        public int GetSize()
+        {
+            return m_kDatas.Length;
+        }
+
+
+        private SceneTable[] m_kDatas;
+        private Dictionary<int, SceneTable> m_kMapDatas = new Dictionary<int, SceneTable>();
     }
 }

@@ -1,0 +1,134 @@
+{ 
+    "1" : { 
+        "ID" : 1,
+        "Name" : "1号英雄-普攻",
+        "Distance" : 7,
+        "SkillRange" : "A|a=40",
+        "Speed" : 3,
+        "Para1" : 5,
+        "Para2" : 80,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "2" : { 
+        "ID" : 2,
+        "Name" : "1号英雄-大招",
+        "Distance" : 7,
+        "SkillRange" : "A|a=60",
+        "Speed" : 3,
+        "Para1" : 6,
+        "Para2" : 80,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "3" : { 
+        "ID" : 3,
+        "Name" : "2号英雄-普攻",
+        "Distance" : 7,
+        "SkillRange" : "",
+        "Speed" : 3,
+        "Para1" : 6,
+        "Para2" : 80,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "4" : { 
+        "ID" : 4,
+        "Name" : "2号英雄-大招",
+        "Distance" : 7,
+        "SkillRange" : "",
+        "Speed" : 3,
+        "Para1" : 12,
+        "Para2" : 80,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "5" : { 
+        "ID" : 5,
+        "Name" : "3号英雄-普攻",
+        "Distance" : 15,
+        "SkillRange" : "A|a=360|r=1",
+        "Speed" : 3,
+        "Para1" : 260,
+        "Para2" : 0,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "6" : { 
+        "ID" : 6,
+        "Name" : "3号英雄-大招",
+        "Distance" : 7,
+        "SkillRange" : "A|a=360|r=1",
+        "Speed" : 0,
+        "Para1" : 260,
+        "Para2" : 2,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "7" : { 
+        "ID" : 7,
+        "Name" : "4号英雄-普攻",
+        "Distance" : 7,
+        "SkillRange" : "",
+        "Speed" : 3,
+        "Para1" : 160,
+        "Para2" : 3,
+        "Para3" : 5,
+        "Description" : 0
+    },
+    "8" : { 
+        "ID" : 8,
+        "Name" : "4号英雄-大招",
+        "Distance" : 7,
+        "SkillRange" : "",
+        "Speed" : 0,
+        "Para1" : 99,
+        "Para2" : 0,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "9" : { 
+        "ID" : 9,
+        "Name" : "7号英雄-普攻",
+        "Distance" : 0,
+        "SkillRange" : "B|[1,3]",
+        "Speed" : 0,
+        "Para1" : 80,
+        "Para2" : 4,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "10" : { 
+        "ID" : 10,
+        "Name" : "7号英雄-大招",
+        "Distance" : 7,
+        "SkillRange" : "A|a=360|r=3",
+        "Speed" : 0,
+        "Para1" : 200,
+        "Para2" : 1,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "11" : { 
+        "ID" : 11,
+        "Name" : "召唤物-炮塔-普攻",
+        "Distance" : 7,
+        "SkillRange" : "",
+        "Speed" : 3,
+        "Para1" : 60,
+        "Para2" : 0,
+        "Para3" : 0,
+        "Description" : 0
+    },
+    "12" : { 
+        "ID" : 12,
+        "Name" : "召唤物-狗熊-普攻",
+        "Distance" : 1,
+        "SkillRange" : "",
+        "Speed" : 0,
+        "Para1" : 100,
+        "Para2" : 0,
+        "Para3" : 0,
+        "Description" : 0
+   
+}

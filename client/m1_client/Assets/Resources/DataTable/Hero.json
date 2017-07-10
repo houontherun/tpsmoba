@@ -1,0 +1,80 @@
+{ 
+    "1" : { 
+        "ID" : 1,
+        "Name" : "",
+        "Modle" : 0,
+        "Describe" : "",
+        "Hp" : 0,
+        "Hpincre" : 0,
+        "Attack" : 0,
+        "Super" : 0,
+        "Speed" : 0,
+        "Shoot" : 0,
+        "Time" : 0
+    },
+    "2" : { 
+        "ID" : 2,
+        "Name" : "",
+        "Modle" : 0,
+        "Describe" : "",
+        "Hp" : 0,
+        "Hpincre" : 0,
+        "Attack" : 0,
+        "Super" : 0,
+        "Speed" : 0,
+        "Shoot" : 0,
+        "Time" : 0
+    },
+    "3" : { 
+        "ID" : 3,
+        "Name" : "",
+        "Modle" : 0,
+        "Describe" : "",
+        "Hp" : 0,
+        "Hpincre" : 0,
+        "Attack" : 0,
+        "Super" : 0,
+        "Speed" : 0,
+        "Shoot" : 0,
+        "Time" : 0
+    },
+    "4" : { 
+        "ID" : 4,
+        "Name" : "",
+        "Modle" : 0,
+        "Describe" : "",
+        "Hp" : 0,
+        "Hpincre" : 0,
+        "Attack" : 0,
+        "Super" : 0,
+        "Speed" : 0,
+        "Shoot" : 0,
+        "Time" : 0
+    },
+    "5" : { 
+        "ID" : 5,
+        "Name" : "",
+        "Modle" : 0,
+        "Describe" : "",
+        "Hp" : 0,
+        "Hpincre" : 0,
+        "Attack" : 0,
+        "Super" : 0,
+        "Speed" : 0,
+        "Shoot" : 0,
+        "Time" : 0
+    },
+    "99" : { 
+        "ID" : 99,
+        "Name" : "炮塔",
+        "Modle" : 0,
+        "Describe" : "",
+        "Hp" : 0,
+        "Hpincre" : 0,
+        "Attack" : 11,
+        "Super" : 0,
+        "Speed" : 0,
+        "Shoot" : -1,
+        "Time" : 0
+   
+}

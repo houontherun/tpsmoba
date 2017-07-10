@@ -1,0 +1,47 @@
+{ 
+    "1" : { 
+        "TimeFloor" : 0,
+        "FightLimit" : 10,
+        "AI" : 0
+    },
+    "2" : { 
+        "TimeFloor" : 5,
+        "FightLimit" : 20,
+        "AI" : 0
+    },
+    "3" : { 
+        "TimeFloor" : 10,
+        "FightLimit" : 40,
+        "AI" : 0
+    },
+    "4" : { 
+        "TimeFloor" : 15,
+        "FightLimit" : 60,
+        "AI" : 0
+    },
+    "5" : { 
+        "TimeFloor" : 20,
+        "FightLimit" : 80,
+        "AI" : 0
+    },
+    "6" : { 
+        "TimeFloor" : 25,
+        "FightLimit" : 100,
+        "AI" : 0
+    },
+    "7" : { 
+        "TimeFloor" : 30,
+        "FightLimit" : 1000,
+        "AI" : 0
+    },
+    "8" : { 
+        "TimeFloor" : 35,
+        "FightLimit" : 10000,
+        "AI" : 0
+    },
+    "9" : { 
+        "TimeFloor" : 40,
+        "FightLimit" : 0,
+        "AI" : 1
+   
+}

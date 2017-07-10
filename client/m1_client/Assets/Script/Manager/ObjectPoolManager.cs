@@ -54,9 +54,9 @@ public class ObjectPoolManager : Manager
         return ObjectPoolSystem.Instance.RecycleObject(obj);
     }
 
-    public static UnityEngine.Object GetSharedResource(string res, EResType restype, Action<UnityEngine.Object[]> func = null)
+    public static UnityEngine.Object GetSharedResource(string res, EResType restype, bool bCache = true)
     {
-        return ObjectPoolSystem.Instance.GetSharedResource(res, restype, func);
+        return ObjectPoolSystem.Instance.GetSharedResource(res, restype, bCache);
     }
 
     public static void Cleanup()
@@ -339,7 +339,7 @@ public class ObjectPoolSystem
         }
     }
 
-    internal UnityEngine.Object GetSharedResource(string res, EResType ResGroup, Action<UnityEngine.Object[]> func = null)
+    internal UnityEngine.Object GetSharedResource(string res, EResType ResGroup, bool bCache = true)
     {
         UnityEngine.Object obj = null;
         string abName = string.Empty;
@@ -381,13 +381,19 @@ public class ObjectPoolSystem
             }
             if (obj != null)
             {
+                if( bCache)
+                {
+                    retObj = UnityEngine.Object.Instantiate(obj);
 
-                retObj = UnityEngine.Object.Instantiate(obj);
-
-                kLoadedPrefabs.Add(res, retObj);
-               AssetsLoaderManager assetLoader =  AppFacade.Instance.GetManager<AssetsLoaderManager>(ManagerName.AssetsLoader);
-               if (assetLoader != null)
-                   assetLoader.UnloadSyncAssetBundle(abName);
+                    kLoadedPrefabs.Add(res, retObj);
+                    AssetsLoaderManager assetLoader = AppFacade.Instance.GetManager<AssetsLoaderManager>(ManagerName.AssetsLoader);
+                    if (assetLoader != null)
+                        assetLoader.UnloadSyncAssetBundle(abName);
+                }
+                else
+                {
+                    retObj = obj;
+                }
             }
             else
             {

@@ -26,7 +26,7 @@ public enum EResType
     eResShader,          //Shader文件
     eResMaterial,       //材质球
     eResTexure,         //贴图 主要用于材质球
-    eResFontAsset,          //资源配置文件
+    eResDataTable,          //资源配置文件
     eSceneLoadRes,          //场景中动态加载的物体
     eResCount,
 }
@@ -55,7 +55,7 @@ public class ResDefine
         kDictResPath[EResType.eResShader] = Application.dataPath + "/Shaders";
         kDictResPath[EResType.eResMaterial] = AppConst.ResourcePath + "/Materials";
 		kDictResPath[EResType.eResTexure] = AppConst.ResourcePath + "/Texture";
-        kDictResPath[EResType.eResFontAsset] = AppConst.ResourcePath + "/FontAssets";
+        kDictResPath[EResType.eResDataTable] = AppConst.ResourcePath + "/DataTable";
         kDictResPath[EResType.eSceneLoadRes] = AppConst.ResourcePath + "/SceneLoadRes";
     }
 
@@ -102,8 +102,8 @@ public class ResDefine
                 return "Materials";
             case EResType.eResTexure:
 			    return "Texture";
-            case EResType.eResFontAsset:
-                return "FontAssets";
+            case EResType.eResDataTable:
+                return "DataTable";
             case EResType.eSceneLoadRes:
                 return "SceneLoadRes";
         }
@@ -181,9 +181,9 @@ public class ResDefine
                 kExtList.Add("jpg");
                 kExtList.Add("dds");
                 break;
-            case EResType.eResFontAsset:
-                kExtList.Add("asset");
-                kExtList.Add("mat");
+            case EResType.eResDataTable:
+                kExtList.Add("json");
+                kExtList.Add("JSON");
                 break;
         }
     }
