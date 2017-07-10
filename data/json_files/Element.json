@@ -1,0 +1,74 @@
+{ 
+    "0" : { 
+        "ID" : 0,
+        "ArtResource" : 0,
+        "Stop" : 1,
+        "Destroy1" : 0,
+        "Destroy2" : 0,
+        "Time" : 0,
+        "Invisible" : 0
+    },
+    "1" : { 
+        "ID" : 1,
+        "ArtResource" : 0,
+        "Stop" : 0,
+        "Destroy1" : 0,
+        "Destroy2" : 1,
+        "Time" : 10,
+        "Invisible" : 1
+    },
+    "2" : { 
+        "ID" : 2,
+        "ArtResource" : 0,
+        "Stop" : 1,
+        "Destroy1" : 0,
+        "Destroy2" : 1,
+        "Time" : 20,
+        "Invisible" : 0
+    },
+    "3" : { 
+        "ID" : 3,
+        "ArtResource" : 0,
+        "Stop" : 1,
+        "Destroy1" : 0,
+        "Destroy2" : 0,
+        "Time" : 0,
+        "Invisible" : 0
+    },
+    "4" : { 
+        "ID" : 4,
+        "ArtResource" : 0,
+        "Stop" : 0,
+        "Destroy1" : 0,
+        "Destroy2" : 0,
+        "Time" : 0,
+        "Invisible" : 0
+    },
+    "11" : { 
+        "ID" : 11,
+        "ArtResource" : 0,
+        "Stop" : 1,
+        "Destroy1" : 1,
+        "Destroy2" : 1,
+        "Time" : 0,
+        "Invisible" : 0
+    },
+    "12" : { 
+        "ID" : 12,
+        "ArtResource" : 0,
+        "Stop" : 1,
+        "Destroy1" : 1,
+        "Destroy2" : 1,
+        "Time" : 0,
+        "Invisible" : 0
+    },
+    "13" : { 
+        "ID" : 13,
+        "ArtResource" : 0,
+        "Stop" : 1,
+        "Destroy1" : 0,
+        "Destroy2" : 1,
+        "Time" : 0,
+        "Invisible" : 0
+   
+}

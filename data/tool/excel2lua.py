@@ -199,11 +199,12 @@ def read_excel_data(filename):
 
 def write_to_lua(data, out_filename, in_filename=""):
     tab = "    "
-    with open(out_filename, "w") as fout:
+    for tablename_en, table in data.iteritems():
         file_str = "{ \n"
-        for tablename_en, table in data.iteritems():
+        file_name = '..\\json_files\\' + tablename_en + '.json'
+        with open(file_name, "w") as fout:
             print u"开始处理sheet ",tablename_en
-            file_str += tab + "\"" + tablename_en + "\" : {\n"
+            #file_str += tab + "\"" + tablename_en + "\" : {\n"
             # 第一行是注释，第二行是对应的拼音字段, 第三行是类型
             try:
                 desc_row = table.row_values(0)
@@ -213,7 +214,7 @@ def write_to_lua(data, out_filename, in_filename=""):
                 err_msg = "第一行是注释，第二行是对应的拼音字段, 第三行是类型"
                 error_location(1, None, err_msg)
                 return -1
-            
+
             for index in xrange(len(keys_row)):
                 try:
                     type_row[index] = type_row[index].strip()
@@ -256,7 +257,7 @@ def write_to_lua(data, out_filename, in_filename=""):
                     warning_location(row_index + 1, index + 1, err_msg)
                     continue
 
-                file_str += tab * 2 + str(table_key) + " : { \n"
+                file_str += tab + str(table_key) + " : { \n"
 
                 for index in xrange(len(row_data)):
                     #print "---",row_data,tablename_en
@@ -271,13 +272,13 @@ def write_to_lua(data, out_filename, in_filename=""):
                         error_location(row_index + 1, index + 1, err_msg)
                         return -1
 
-                    file_str += tab * 3 + "\"" + str(key) + "\" : " + item + ",\n"
+                    file_str += tab * 2 + "\"" + str(key) + "\" : " + item + ",\n"
                 file_str = file_str[:-2] + "\n"
-                file_str += tab * 2 + "},\n"
+                file_str += tab + "},\n"
             file_str = file_str[:-2] + "\n"
-            file_str += tab + "},\n\n"
-        file_str = file_str[:-3] + "\n}"
-        fout.write(file_str)
+            #file_str += tab + "},\n\n"
+            file_str = file_str[:-3] + "\n}"
+            fout.write(file_str)
 
 
 def test_write():
