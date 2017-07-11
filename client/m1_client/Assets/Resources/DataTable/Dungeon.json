@@ -1,0 +1,14 @@
+{ 
+    "1" : { 
+        "Dungeon" : "S1",
+        "Playing" : "A",
+        "BirthPoint1" : [18, 1, 17, 1, 19, 1],
+        "BirthPoint2" : [18, 64, 17, 64, 19, 64]
+    },
+    "2" : { 
+        "Dungeon" : "S2",
+        "Playing" : "B",
+        "BirthPoint1" : [18, 1, 17, 1, 19, 1],
+        "BirthPoint2" : [18, 64, 17, 64, 19, 64]
+   
+}

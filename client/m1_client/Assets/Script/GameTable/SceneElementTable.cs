@@ -38,9 +38,45 @@ namespace Table
 
     public class SceneElementTableConfig
     {
-        public string GetJsonName()
+        public string GetTableName()
         {
             return "SceneElementTable";
         }
+
+
+        public bool Load(string text)
+        {
+            m_kDatas = JsonHelp.ReadFromJsonString<SceneElementTable[]>(text);
+            foreach (var item in m_kDatas)
+            {
+                m_kMapDatas.Add(item.ID, item);
+            }
+            return true;
+        }
+
+        public SceneElementTable Get(int iID)
+        {
+            SceneElementTable rkRet = null;
+            if (!m_kMapDatas.TryGetValue(iID, out rkRet))
+            {
+                return null;
+            }
+            return rkRet;
+        }
+
+
+        public SceneElementTable At(int index)
+        {
+            return m_kDatas[index];
+        }
+
+        public int GetSize()
+        {
+            return m_kDatas.Length;
+        }
+
+
+        private SceneElementTable[] m_kDatas;
+        private Dictionary<int, SceneElementTable> m_kMapDatas = new Dictionary<int, SceneElementTable>();
     }
 }

@@ -22,7 +22,7 @@ public class TableData
         kLoadData.kType = typeof(T);
         MethodInfo kMethodInfo = kLoadData.kType.GetMethod("GetTableName", BindingFlags.Instance | BindingFlags.Public);
         string kTableName = (string)kMethodInfo.Invoke(kLoadData.kObj, null);
-        kLoadData.text = Resources.Load<TextAsset>(kTableName).text;
+        kLoadData.text = ResourceManager.GetText(kTableName);
         if (kLoadData.text != null)
         {
             m_kLoadData.Add(kLoadData);

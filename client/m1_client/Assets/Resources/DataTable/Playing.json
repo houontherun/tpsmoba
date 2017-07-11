@@ -1,0 +1,23 @@
+{ 
+    "1" : { 
+        "Playing" : "A",
+        "Number" : 3,
+        "Para1" : 150,
+        "Para2" : 0,
+        "Para3" : 0
+    },
+    "2" : { 
+        "Playing" : "B",
+        "Number" : 3,
+        "Para1" : 10,
+        "Para2" : 16,
+        "Para3" : 0
+    },
+    "3" : { 
+        "Playing" : "C",
+        "Number" : 10,
+        "Para1" : 1,
+        "Para2" : 0,
+        "Para3" : 0
+   
+}

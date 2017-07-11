@@ -863,13 +863,14 @@
             currentDepth -= depthStep;
 
             TMP_FontAsset font = null;
+           
             if(layer.FontName == "LiSu")
             {
-                font = ObjectPoolManager.GetSharedResource("FontsMaterials/SIMLI SDF", EResType.eResFontAsset) as TMP_FontAsset;
+                font =  TMP_Settings.defaultFontAsset;
             }
             else //SimHei
             {
-                font = ObjectPoolManager.GetSharedResource("FontsMaterials/Droid Sans Fallback SDF", EResType.eResFontAsset) as TMP_FontAsset;
+                font = TMP_Settings.defaultFontAsset;
             }
             textUI.font = font;
             textUI.text = layer.Text;
