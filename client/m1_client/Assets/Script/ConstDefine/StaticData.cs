@@ -33,7 +33,7 @@ public class TableData
 
     public static void PreInit()
     {
-        pSceneTableInfo = AsyncLoadTable<SceneTableConfig>();
+        pSceneTableInfo = AsyncLoadTable<SceneTable_S1Config>();
         pSceneEleTableInfo = AsyncLoadTable<SceneElementTableConfig>();
     }
 
@@ -63,8 +63,8 @@ public class TableData
     }
 
 
-    static SceneTableConfig pSceneTableInfo = null;
-    public static SceneTableConfig PSceneTableInfo
+    static SceneTable_S1Config pSceneTableInfo = null;
+    public static SceneTable_S1Config PSceneTableInfo
     {
         get
         {

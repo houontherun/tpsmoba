@@ -154,18 +154,23 @@ namespace Table
         /// 
         /// </summary>
         public int X36 { get; set; }
+
+        public SceneTable()
+        {
+
+        }
     }
 
-    public class SceneTableConfig
+    public class SceneTable_S1Config
     {
         public string GetTableName()
         {
-            return "SceneTable";
+            return "S1";
         }
 
         public bool Load(string text)
         {
-            m_kDatas = JsonHelp.ReadFromJsonString<SceneTable[]>(text);
+            m_kDatas = JsonMapper.ToObject<SceneTable[]>(text);
             foreach (var item in m_kDatas)
             {
                 m_kMapDatas.Add(item.Y, item);

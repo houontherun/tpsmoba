@@ -91,12 +91,8 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     {
 	    info.Progress = 0.99f;
         yield return new WaitForSeconds(.2f);//强行0.15秒
-        info.IsDone = true;
-        if (bundle != null)
-        {
-            //bundle.Unload(false);
-            bundle = null;
-        }
+        TableData.Init(delegate() { info.IsDone = true; });
+
     }
 
     

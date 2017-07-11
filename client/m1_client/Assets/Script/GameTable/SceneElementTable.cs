@@ -34,23 +34,43 @@ namespace Table
         /// 
         /// </summary>
         public int Invisible { get; set; }
+
+        public SceneElementTable()
+        { }
     }
 
     public class SceneElementTableConfig
     {
         public string GetTableName()
         {
-            return "SceneElementTable";
+            return "Element";
         }
 
 
         public bool Load(string text)
         {
-            m_kDatas = JsonHelp.ReadFromJsonString<SceneElementTable[]>(text);
-            foreach (var item in m_kDatas)
+            JsonData jsonData = JsonMapper.ToObject(text);
+            for (int i = 0; i < jsonData.Count; i++)
             {
-                m_kMapDatas.Add(item.ID, item);
+                SceneElementTable sceneElem = new SceneElementTable();
+                JsonData idValue = jsonData[i]["ID"];
+                JsonData artRes = jsonData[i]["ArtResource"];
+                JsonData stop = jsonData[i]["Stop"];
+                JsonData idestroy1 = jsonData[i]["Destroy1"];
+                JsonData idestroy2 = jsonData[i]["Destroy2"];
+                JsonData itime = jsonData[i]["Time"];
+                JsonData invisible = jsonData[i]["Invisible"];
+                sceneElem.ID = int.Parse(idValue.ToString());
+                sceneElem.ArtResource = int.Parse(artRes.ToString());
+                sceneElem.Stop = int.Parse(stop.ToString());
+                sceneElem.Destroy1 = int.Parse(idestroy1.ToString());
+                sceneElem.Destroy2 = int.Parse(idestroy2.ToString());
+                sceneElem.Time = int.Parse(itime.ToString());
+                sceneElem.Invisible = int.Parse(invisible.ToString());
+                m_kDatas.Add(sceneElem);
+                m_kMapDatas.Add(sceneElem.ID, sceneElem);
             }
+
             return true;
         }
 
@@ -72,11 +92,11 @@ namespace Table
 
         public int GetSize()
         {
-            return m_kDatas.Length;
+            return m_kDatas.Count;
         }
 
 
-        private SceneElementTable[] m_kDatas;
+        private List<SceneElementTable> m_kDatas = new List<SceneElementTable>();
         private Dictionary<int, SceneElementTable> m_kMapDatas = new Dictionary<int, SceneElementTable>();
     }
 }

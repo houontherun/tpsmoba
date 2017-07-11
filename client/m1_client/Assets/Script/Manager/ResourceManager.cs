@@ -169,7 +169,7 @@ public class ResourceManager : Manager
         else
         {
 #if UNITY_EDITOR
-            textAsset = Resources.Load<TextAsset>("DataTable/" + res + ".json");
+            textAsset = Resources.Load<TextAsset>("DataTable/" + res);
 #endif
         }
         if (textAsset!=null)
