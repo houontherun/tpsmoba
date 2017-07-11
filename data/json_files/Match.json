@@ -43,5 +43,6 @@
         "TimeFloor" : 40,
         "FightLimit" : 0,
         "AI" : 1
-   
+    }
+
 }

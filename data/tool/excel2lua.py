@@ -277,7 +277,7 @@ def write_to_lua(data, out_filename, in_filename=""):
                 file_str += tab + "},\n"
             file_str = file_str[:-2] + "\n"
             #file_str += tab + "},\n\n"
-            file_str = file_str[:-3] + "\n}"
+            file_str = file_str + "\n}"
             fout.write(file_str)
 
 
