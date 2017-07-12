@@ -55,7 +55,7 @@ namespace Table
                 TableInstance.Reward1 = new List<int>();
                 for (int j = 0; j < tempReward1.Count; j++)
                 {
-                    string v = tempReward1[i].ToString();
+                    string v = tempReward1[j].ToString();
                     if (v == "") continue;
                     TableInstance.Reward1.Add(int.Parse(v));
                 }

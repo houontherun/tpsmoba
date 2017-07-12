@@ -53,7 +53,7 @@ namespace Table
                 TableInstance.BirthPoint1 = new List<int>();
                 for (int j = 0; j < tempBirthPoint1.Count; j++)
                 {
-                    string v = tempBirthPoint1[i].ToString();
+                    string v = tempBirthPoint1[j].ToString();
                     if (v == "") continue;
                     TableInstance.BirthPoint1.Add(int.Parse(v));
                 }
@@ -61,7 +61,7 @@ namespace Table
                 TableInstance.BirthPoint2 = new List<int>();
                 for (int j = 0; j < tempBirthPoint2.Count; j++)
                 {
-                    string v = tempBirthPoint2[i].ToString();
+                    string v = tempBirthPoint2[j].ToString();
                     if (v == "") continue;
                     TableInstance.BirthPoint2.Add(int.Parse(v));
                 }
