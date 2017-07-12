@@ -221,13 +221,13 @@ def write_to_lua(data, out_filename, in_filename=""):
                     if len(keys_row[index]) != 0:
                         if str(type_row[index]) not in ["int", "float", "bool", "string", "list_int", "list_float"]:
                             err_msg = "类型必须为int, float, bool ,string, list_int, list_float之一 " + str(keys_row[index]) + ": " + str(
-                                type_row[index]) + tab + desc_row[index]
+                                type_row[index]) + tab + str(desc_row[index])
                             error_location(3, index + 1, err_msg)
                             return -1
                         #file_str += tab * 2 + str(keys_row[index]) + ": " + str(type_row[index]) + tab + desc_row[index] + "\n"
                 except:
                     err_msg = "类型必须为int, float, bool ,string, list_int, list_float之一 " + str(keys_row[index]) + ": " + str(
-                        type_row[index]) + tab + desc_row[index]
+                        type_row[index]) + tab + str(desc_row[index])
                     error_location(3, index + 1, err_msg)
                     return -1
 
@@ -280,6 +280,149 @@ def write_to_lua(data, out_filename, in_filename=""):
             file_str = file_str + "\n}"
             fout.write(file_str)
 
+def write_to_cs(data, out_filename, in_filename=""):
+    tab = "    "
+    for tablename_en, table in data.iteritems():
+        file_name = '..\\cs_files\\' + tablename_en + 'Table.cs'
+        file_str = "using System.Collections;\n"
+        file_str += "using System.Collections.Generic;\n"
+        file_str += "using UnityEngine;\n\n"
+        file_str += "namespace Table\n{\n"
+
+        class_name = tablename_en + 'Table'
+        file_str += tab + "public class " + class_name + "\n"
+        file_str += tab + "{\n"
+
+        with open(file_name, "w") as fout:
+            print u"开始处理sheet ",tablename_en
+            #file_str += tab + "\"" + tablename_en + "\" : {\n"
+            # 第一行是注释，第二行是对应的拼音字段, 第三行是类型
+            try:
+                desc_row = table.row_values(0)
+                keys_row = table.row_values(1)
+                type_row = table.row_values(2)
+            except:
+                err_msg = "第一行是注释，第二行是对应的拼音字段, 第三行是类型"
+                error_location(1, None, err_msg)
+                return -1
+
+            for index in xrange(len(keys_row)):
+                try:
+                    type_row[index] = type_row[index].strip()
+                    if len(keys_row[index]) != 0:
+                        if str(type_row[index]) not in ["int", "float", "bool", "string", "list_int", "list_float"]:
+                            err_msg = "类型必须为int, float, bool ,string, list_int, list_float之一 " + str(keys_row[index]) + ": " + str(
+                                type_row[index]) + tab + str(desc_row[index])
+                            error_location(3, index + 1, err_msg)
+                            return -1
+                        file_str += tab * 2 + "/// <summary>\n"
+                        file_str += tab * 2 + "/// " + str(desc_row[index]) + "\n"
+                        file_str += tab * 2 + "/// </summary>\n"
+                        file_str += tab * 2 + "public int " + keys_row[index] + " { get; set; }\n"
+                        #file_str += tab * 2 + str(keys_row[index]) + ": " + str(type_row[index]) + tab + desc_row[index] + "\n"
+                except:
+                    err_msg = "类型必须为int, float, bool ,string, list_int, list_float之一 " + str(keys_row[index]) + ": " + \
+                              str(type_row[index]) + tab + str(desc_row[index])
+                    error_location(3, index + 1, err_msg)
+                    return -1
+            file_str += tab * 2 + "public " + class_name + "()\n"
+            file_str += tab * 2 + "{ }\n" + tab + "}\n"
+
+            id_flag = -1
+            for i in xrange(len(keys_row)):
+                if "ID" == str(keys_row[i]):
+                    id_flag = i
+
+            if id_flag == -1:
+                print "页签没有ID"
+                return -1
+
+            file_str += tab + "public class " + class_name + "Config\n"
+            file_str += tab + "{\n"
+            file_str += tab * 2 + "public string GetTableName()\n"
+            file_str += tab * 2 + "{\n"
+            file_str += tab * 3 + "return \"" + tablename_en + "\";\n"
+            file_str += tab * 2 + "}\n\n"
+
+            file_str += tab * 2 + "public bool Load(string text)\n"
+            file_str += tab * 2 + "{\n"
+            file_str += tab * 3 + "JsonData jsonData = JsonMapper.ToObject(text);\n"
+            file_str += tab * 3 + "for (int i = 0; i < jsonData.Count; i++)\n"
+            file_str += tab * 3 + "{\n"
+            file_str += tab * 4 + "JsonData data = jsonData[i];\n"
+            file_str += tab * 4 + class_name + " TableInstance = new " + class_name + "();\n"
+
+            for index in xrange(len(keys_row)):
+                type_row[index] = type_row[index].strip()
+                if len(keys_row[index]) != 0:
+                    file_str += tab * 4 + "JsonData temp" + keys_row[index] + " = data[\"" + keys_row[index] + "\"];\n"
+                    if type_row[index] == "int":
+                        file_str += tab * 4 + "TableInstance." + keys_row[index] + " = int.Parse(temp" + keys_row[
+                            index] + ".ToString());\n"
+                    elif type_row[index] == "float":
+                        file_str += tab * 4 + "TableInstance." + keys_row[index] + " = float.Parse(temp" + keys_row[
+                            index] + ".ToString());\n"
+                    elif type_row[index] == "bool":
+                        file_str += tab * 4 + "TableInstance." + keys_row[index] + " = bool.Parse(temp" + keys_row[
+                            index] + ".ToString());\n"
+                    elif type_row[index] == "string":
+                        file_str += tab * 4 + "TableInstance." + keys_row[index] + " = temp" + keys_row[
+                            index] + ".ToString();\n"
+                    elif type_row[index] == "list_int":
+                        file_str += tab * 4 + "TableInstance." + keys_row[index] + " = new List<int>();\n"
+                        file_str += tab * 4 + "for (int j = 0; j < temp" + keys_row[index] + ".Count; i++)\n"
+                        file_str += tab * 4 + "{\n"
+                        file_str += tab * 5 + "string v = temp" + keys_row[index] + "[i].ToString();\n"
+                        file_str += tab * 5 + "if (v == \"\") continue;\n"
+                        file_str += tab * 5 + "TableInstance." + keys_row[index] + ".Add(int.Parse(v));\n"
+                        file_str += tab * 4 + "}\n"
+                    elif type_row[index] == "list_float":
+                        file_str += tab * 4 + "TableInstance." + keys_row[index] + " = new List<float>();\n"
+                        file_str += tab * 4 + "for (int j = 0; j < temp" + keys_row[index] + ".Count; i++)\n"
+                        file_str += tab * 4 + "{\n"
+                        file_str += tab * 5 + "string v = temp" + keys_row[index] + "[i].ToString();\n"
+                        file_str += tab * 5 + "if (v == \"\") continue;\n"
+                        file_str += tab * 5 + "TableInstance." + keys_row[index] + ".Add(float.Parse(v));\n"
+                        file_str += tab * 4 + "}\n"
+                    else:
+                        err_msg = "类型必须为int, float, bool ,string, list_int, list_float之一 " + str(
+                            keys_row[index]) + ": " + str(type_row[index]) + tab + str(desc_row[index])
+                        error_location(3, index + 1, err_msg)
+                        return -1
+
+            file_str += tab * 4 + "////////////////////\n"
+            file_str += tab * 4 + "m_kDatas.Add(TableInstance);\n"
+            file_str += tab * 4 + "m_kMapDatas.Add(TableInstance.ID, TableInstance);\n"
+            file_str += tab * 3 + "}\n\n"
+            file_str += tab * 3 + "return true;\n"
+            file_str += tab * 2 + "}\n\n"
+
+            file_str += tab * 2 + "public " + class_name + " Get(int iID)\n"
+            file_str += tab * 2 + "{\n"
+            file_str += tab * 3 + class_name + " rkRet = null;\n"
+            file_str += tab * 3 + "if (!m_kMapDatas.TryGetValue(iID, out rkRet))\n"
+            file_str += tab * 3 + "{\n"
+            file_str += tab * 4 + "return null;\n"
+            file_str += tab * 3 + "}\n"
+            file_str += tab * 3 + "return rkRet;\n"
+            file_str += tab * 2 + "}\n"
+
+            file_str += tab * 2 + "public " + class_name + " At(int index)\n"
+            file_str += tab * 2 + "{\n"
+            file_str += tab * 3 + "return m_kDatas[index];\n"
+            file_str += tab * 2 + "}\n\n"
+
+            file_str += tab * 2 + "public int GetSize()\n"
+            file_str += tab * 2 + "{\n"
+            file_str += tab * 3 + "return m_kDatas.Count;\n"
+            file_str += tab * 2 + "}\n"
+
+            file_str += tab * 2 + "private List<" + class_name + "> m_kDatas = new List<" + class_name + ">();\n"
+            file_str += tab * 2 + "private Dictionary<int, " + class_name + "> m_kMapDatas = new Dictionary<int, " + class_name + ">();\n"
+            file_str += tab + "}\n"
+            file_str += "}\n"
+
+            fout.write(file_str)
 
 def test_write():
     d = {"shuxing":{}}
@@ -300,6 +443,10 @@ def convert_excel_to_lua(in_filename, out_filename):
 
     #write_to_lua(data, out_filename, in_filename)
     rst = write_to_lua(data, out_filename, in_filename)
+    if rst == -1:
+        return -1
+
+    rst = write_to_cs(data, out_filename, in_filename)
     if rst == -1:
         return -1
 
