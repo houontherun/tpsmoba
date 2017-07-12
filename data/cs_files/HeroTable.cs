@@ -13,7 +13,7 @@ namespace Table
         /// <summary>
         /// 英雄名
         /// </summary>
-        public int Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 模型ID
         /// </summary>
@@ -21,7 +21,7 @@ namespace Table
         /// <summary>
         /// 描述
         /// </summary>
-        public int Describe { get; set; }
+        public string Describe { get; set; }
         /// <summary>
         /// 生命值
         /// </summary>

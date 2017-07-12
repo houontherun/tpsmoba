@@ -13,7 +13,7 @@ namespace Table
         /// <summary>
         /// 名称
         /// </summary>
-        public int Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 转化碎片数量
         /// </summary>
@@ -29,7 +29,7 @@ namespace Table
         /// <summary>
         /// 介绍
         /// </summary>
-        public int Description { get; set; }
+        public string Description { get; set; }
         public ItemTable()
         { }
     }

@@ -13,7 +13,7 @@ namespace Table
         /// <summary>
         /// 副本
         /// </summary>
-        public int Dungeon { get; set; }
+        public string Dungeon { get; set; }
         /// <summary>
         /// 战斗类型
         /// </summary>
@@ -21,11 +21,11 @@ namespace Table
         /// <summary>
         /// A方出生点坐标
         /// </summary>
-        public int BirthPoint1 { get; set; }
+        public List<int> BirthPoint1 { get; set; }
         /// <summary>
         /// B方出生点坐标
         /// </summary>
-        public int BirthPoint2 { get; set; }
+        public List<int> BirthPoint2 { get; set; }
         public DungeonTable()
         { }
     }

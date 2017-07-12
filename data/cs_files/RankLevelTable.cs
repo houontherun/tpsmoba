@@ -25,7 +25,7 @@ namespace Table
         /// <summary>
         /// 奖励
         /// </summary>
-        public int Reward1 { get; set; }
+        public List<int> Reward1 { get; set; }
         public RankLevelTable()
         { }
     }

@@ -17,7 +17,7 @@ namespace Table
         /// <summary>
         /// 奖励道具
         /// </summary>
-        public int BonusProps { get; set; }
+        public string BonusProps { get; set; }
         /// <summary>
         /// 权重
         /// </summary>

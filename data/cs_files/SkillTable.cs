@@ -13,7 +13,7 @@ namespace Table
         /// <summary>
         /// 技能名称
         /// </summary>
-        public int Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 射程
         /// </summary>
@@ -21,7 +21,7 @@ namespace Table
         /// <summary>
         /// 作用范围
         /// </summary>
-        public int SkillRange { get; set; }
+        public string SkillRange { get; set; }
         /// <summary>
         /// 弹道速度
         /// </summary>

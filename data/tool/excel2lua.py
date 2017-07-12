@@ -318,7 +318,25 @@ def write_to_cs(data, out_filename, in_filename=""):
                         file_str += tab * 2 + "/// <summary>\n"
                         file_str += tab * 2 + "/// " + str(desc_row[index]) + "\n"
                         file_str += tab * 2 + "/// </summary>\n"
-                        file_str += tab * 2 + "public int " + keys_row[index] + " { get; set; }\n"
+
+                        if type_row[index] == "int":
+                            file_str += tab * 2 + "public int " + keys_row[index] + " { get; set; }\n"
+                        elif type_row[index] == "float":
+                            file_str += tab * 2 + "public float " + keys_row[index] + " { get; set; }\n"
+                        elif type_row[index] == "bool":
+                            file_str += tab * 2 + "public bool " + keys_row[index] + " { get; set; }\n"
+                        elif type_row[index] == "string":
+                            file_str += tab * 2 + "public string " + keys_row[index] + " { get; set; }\n"
+                        elif type_row[index] == "list_int":
+                            file_str += tab * 2 + "public List<int> " + keys_row[index] + " { get; set; }\n"
+                        elif type_row[index] == "list_float":
+                            file_str += tab * 2 + "public List<float> " + keys_row[index] + " { get; set; }\n"
+                        else:
+                            err_msg = "类型必须为int, float, bool ,string, list_int, list_float之一 " + str(
+                                keys_row[index]) + ": " + str(type_row[index]) + tab + str(desc_row[index])
+                            error_location(3, index + 1, err_msg)
+                            return -1
+
                         #file_str += tab * 2 + str(keys_row[index]) + ": " + str(type_row[index]) + tab + desc_row[index] + "\n"
                 except:
                     err_msg = "类型必须为int, float, bool ,string, list_int, list_float之一 " + str(keys_row[index]) + ": " + \
