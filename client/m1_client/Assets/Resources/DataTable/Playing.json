@@ -1,20 +1,20 @@
 { 
-    "1" : { 
-        "Playing" : "A",
+    "101" : { 
+        "ID" : 101,
         "Number" : 3,
         "Para1" : 150,
         "Para2" : 0,
         "Para3" : 0
     },
-    "2" : { 
-        "Playing" : "B",
+    "102" : { 
+        "ID" : 102,
         "Number" : 3,
         "Para1" : 10,
         "Para2" : 16,
         "Para3" : 0
     },
-    "3" : { 
-        "Playing" : "C",
+    "103" : { 
+        "ID" : 103,
         "Number" : 10,
         "Para1" : 1,
         "Para2" : 0,

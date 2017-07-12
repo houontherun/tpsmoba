@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Table;
 using System.Reflection;
+using System.Threading;
 
 public class TableData 
 {
@@ -33,13 +34,23 @@ public class TableData
 
     public static void PreInit()
     {
-        pSceneTableInfo = AsyncLoadTable<SceneTable_S1Config>();
-        pSceneEleTableInfo = AsyncLoadTable<SceneElementTableConfig>();
+        pSceneTableInfo = AsyncLoadTable<S1TableConfig>();
+        pSceneEleTableInfo = AsyncLoadTable<ElementTableConfig>();
+        pDungeonTableInfo = AsyncLoadTable<DungeonTableConfig>();
     }
 
     public static void Init(Action kCallBack)
     {
+        if (m_kLoadData.Count > 1) return;
         PreInit();
+        Thread kThread = new Thread(new ParameterizedThreadStart(TreadInit));
+        kThread.Start(kCallBack);
+        
+    }
+
+    public static void TreadInit(object param)
+    {
+        Action kCallBack = (Action)param;
         LoadData kLoadData = null;
         for (int iIdx = 0; iIdx < m_kLoadData.Count; iIdx++)
         {
@@ -52,7 +63,7 @@ public class TableData
             catch (System.Exception ex)
             {
                 LogCenter.LogError("json Load Err: [" + kLoadData.kType.ToString() + "]----->" + ex.Message);
-                
+
             }
         }
         m_kLoadData.Clear();
@@ -62,9 +73,8 @@ public class TableData
         }
     }
 
-
-    static SceneTable_S1Config pSceneTableInfo = null;
-    public static SceneTable_S1Config PSceneTableInfo
+    static S1TableConfig pSceneTableInfo = null;
+    public static S1TableConfig PSceneTableInfo
     {
         get
         {
@@ -72,12 +82,21 @@ public class TableData
         }
     }
 
-    static SceneElementTableConfig pSceneEleTableInfo = null;
-    public static SceneElementTableConfig PSceneEleTableInfo
+    static ElementTableConfig pSceneEleTableInfo = null;
+    public static ElementTableConfig PSceneEleTableInfo
     {
         get
         {
             return pSceneEleTableInfo;
+        }
+    }
+
+    static DungeonTableConfig pDungeonTableInfo = null;
+    public static DungeonTableConfig PDungeonTableInfo
+    {
+        get
+        {
+            return pDungeonTableInfo;
         }
     }
 }
