@@ -53,7 +53,7 @@ namespace Table
                 TableInstance.Icon = int.Parse(tempIcon.ToString());
                 JsonData tempReward1 = data["Reward1"];
                 TableInstance.Reward1 = new List<int>();
-                for (int j = 0; j < tempReward1.Count; i++)
+                for (int j = 0; j < tempReward1.Count; j++)
                 {
                     string v = tempReward1[i].ToString();
                     if (v == "") continue;

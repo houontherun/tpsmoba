@@ -388,7 +388,7 @@ def write_to_cs(data, out_filename, in_filename=""):
                             index] + ".ToString();\n"
                     elif type_row[index] == "list_int":
                         file_str += tab * 4 + "TableInstance." + keys_row[index] + " = new List<int>();\n"
-                        file_str += tab * 4 + "for (int j = 0; j < temp" + keys_row[index] + ".Count; i++)\n"
+                        file_str += tab * 4 + "for (int j = 0; j < temp" + keys_row[index] + ".Count; j++)\n"
                         file_str += tab * 4 + "{\n"
                         file_str += tab * 5 + "string v = temp" + keys_row[index] + "[i].ToString();\n"
                         file_str += tab * 5 + "if (v == \"\") continue;\n"
@@ -396,7 +396,7 @@ def write_to_cs(data, out_filename, in_filename=""):
                         file_str += tab * 4 + "}\n"
                     elif type_row[index] == "list_float":
                         file_str += tab * 4 + "TableInstance." + keys_row[index] + " = new List<float>();\n"
-                        file_str += tab * 4 + "for (int j = 0; j < temp" + keys_row[index] + ".Count; i++)\n"
+                        file_str += tab * 4 + "for (int j = 0; j < temp" + keys_row[index] + ".Count; j++)\n"
                         file_str += tab * 4 + "{\n"
                         file_str += tab * 5 + "string v = temp" + keys_row[index] + "[i].ToString();\n"
                         file_str += tab * 5 + "if (v == \"\") continue;\n"

@@ -51,7 +51,7 @@ namespace Table
                 TableInstance.Playing = int.Parse(tempPlaying.ToString());
                 JsonData tempBirthPoint1 = data["BirthPoint1"];
                 TableInstance.BirthPoint1 = new List<int>();
-                for (int j = 0; j < tempBirthPoint1.Count; i++)
+                for (int j = 0; j < tempBirthPoint1.Count; j++)
                 {
                     string v = tempBirthPoint1[i].ToString();
                     if (v == "") continue;
@@ -59,7 +59,7 @@ namespace Table
                 }
                 JsonData tempBirthPoint2 = data["BirthPoint2"];
                 TableInstance.BirthPoint2 = new List<int>();
-                for (int j = 0; j < tempBirthPoint2.Count; i++)
+                for (int j = 0; j < tempBirthPoint2.Count; j++)
                 {
                     string v = tempBirthPoint2[i].ToString();
                     if (v == "") continue;
