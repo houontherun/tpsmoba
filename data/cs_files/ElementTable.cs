@@ -13,7 +13,11 @@ namespace Table
         /// <summary>
         /// 美术资源
         /// </summary>
-        public int ArtResource { get; set; }
+        public string ArtResource1 { get; set; }
+        /// <summary>
+        /// 摧毁状态
+        /// </summary>
+        public string ArtResource2 { get; set; }
         /// <summary>
         /// 是否阻挡
         /// </summary>
@@ -53,8 +57,10 @@ namespace Table
                 ElementTable TableInstance = new ElementTable();
                 JsonData tempID = data["ID"];
                 TableInstance.ID = int.Parse(tempID.ToString());
-                JsonData tempArtResource = data["ArtResource"];
-                TableInstance.ArtResource = int.Parse(tempArtResource.ToString());
+                JsonData tempArtResource1 = data["ArtResource1"];
+                TableInstance.ArtResource1 = tempArtResource1.ToString();
+                JsonData tempArtResource2 = data["ArtResource2"];
+                TableInstance.ArtResource2 = tempArtResource2.ToString();
                 JsonData tempStop = data["Stop"];
                 TableInstance.Stop = int.Parse(tempStop.ToString());
                 JsonData tempDestroy1 = data["Destroy1"];
