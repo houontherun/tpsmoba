@@ -51,7 +51,8 @@ public class FightUI : MonoBehaviour {
     {
         if(BattleDirector.Instance.hero)
         {
-            BattleDirector.Instance.hero.transform.position += new Vector3(controlDirection.y, 0, -controlDirection.x);
+            var direction = new Vector3(-controlDirection.y, 0, controlDirection.x);
+            BattleDirector.Instance.hero.Move(direction);
         }
     }
 }
