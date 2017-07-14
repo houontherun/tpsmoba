@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Table;
 using System.Reflection;
+using System.Threading;
+
 
 public class TableData 
 {
@@ -33,13 +35,21 @@ public class TableData
 
     public static void PreInit()
     {
-        pSceneTableInfo = AsyncLoadTable<SceneTable_S1Config>();
-        pSceneEleTableInfo = AsyncLoadTable<SceneElementTableConfig>();
+        pScene1TableInfo = AsyncLoadTable<Scene1TableConfig>();
+        pScene2TableInfo = AsyncLoadTable<Scene2TableConfig>();
     }
 
     public static void Init(Action kCallBack)
     {
         PreInit();
+        Thread kThread = new Thread(new ParameterizedThreadStart(ThreadInit));
+        kThread.Start(kCallBack);
+        
+    }
+
+    public static void ThreadInit(object param)
+    {
+        Action kCallBack = (Action)param;
         LoadData kLoadData = null;
         for (int iIdx = 0; iIdx < m_kLoadData.Count; iIdx++)
         {
@@ -52,7 +62,7 @@ public class TableData
             catch (System.Exception ex)
             {
                 LogCenter.LogError("json Load Err: [" + kLoadData.kType.ToString() + "]----->" + ex.Message);
-                
+
             }
         }
         m_kLoadData.Clear();
@@ -61,23 +71,21 @@ public class TableData
             kCallBack();
         }
     }
-
-
-    static SceneTable_S1Config pSceneTableInfo = null;
-    public static SceneTable_S1Config PSceneTableInfo
+    static Scene1TableConfig pScene1TableInfo = null;
+    public static Scene1TableConfig PScene1TableInfo
     {
         get
         {
-            return pSceneTableInfo;
+            return pScene1TableInfo;
         }
     }
 
-    static SceneElementTableConfig pSceneEleTableInfo = null;
-    public static SceneElementTableConfig PSceneEleTableInfo
+    static Scene2TableConfig pScene2TableInfo = null;
+    public static Scene2TableConfig PScene2TableInfo
     {
         get
         {
-            return pSceneEleTableInfo;
+            return pScene2TableInfo;
         }
     }
 }
