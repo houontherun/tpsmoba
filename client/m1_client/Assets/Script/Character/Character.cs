@@ -6,7 +6,7 @@ public class Character : MonoBehaviour {
 
     // Use this for initialization
     CharacterController cc;
-    float speed = 0.1f;
+    float speed = 0.03f;
     Animation animation;
 
 	void Start ()
@@ -34,7 +34,8 @@ public class Character : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
 		
 	}
 }

@@ -45,6 +45,10 @@ public class FightUI : MonoBehaviour {
     {
         joyStickNood.GetComponent<RectTransform>().anchoredPosition = initialPos;
         controlDirection = Vector2.zero;
+        if (BattleDirector.Instance.hero)
+        {
+            BattleDirector.Instance.hero.StopMove();
+        }
     }
 
     void OnHeroMove()
