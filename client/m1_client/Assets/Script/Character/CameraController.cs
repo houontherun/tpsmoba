@@ -98,7 +98,7 @@ public class CameraController : MonoBehaviour
         if (initial == false)   
         {
             //刚进场景不进行damp一步到位
-            initial = true;
+            //initial = true;
             cacheCamera.transform.localEulerAngles = new Vector3(normalRotateX + offsetRotateX, -90, 0);
             cacheCamera.transform.position = dst;
             cacheCamera.fieldOfView = 45;
