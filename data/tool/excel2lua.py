@@ -486,12 +486,14 @@ def scene_cs_load_file(tablename_en, table):
     file_str += tab * 4 + "int j = 0;\n"
     file_str += tab * 4 + "JsonData data = jsonData[i];\n"
 
+    list_str = ""
     for index in xrange(len(keys_row)):
         type_row[index] = type_row[index].strip()
-        if len(keys_row[index]) != 0:
+        if len(keys_row[index]) != 0 and keys_row[index] != "ID":
             file_str += tab * 4 + "JsonData temp" + keys_row[index] + " = data[\"" + keys_row[index] + "\"];\n"
+            list_str += "i" + keys_row[index] + ", "
             if type_row[index] == "int":
-                file_str += tab * 4 + "m_kMapDatas[i][j++] = int.Parse(temp" + keys_row[index] + ".ToString());\n"
+                file_str += tab * 4 + "int i" + keys_row[index] + " = int.Parse(temp" + keys_row[index] + ".ToString());\n"
             elif type_row[index] == "float":
                 file_str += tab * 4 + "m_kMapDatas[i][j++] = float.Parse(temp" + keys_row[index] + ".ToString());\n"
             elif type_row[index] == "bool":
@@ -503,8 +505,10 @@ def scene_cs_load_file(tablename_en, table):
                     keys_row[index]) + ": " + str(type_row[index]) + tab + str(desc_row[index])
                 error_location(3, index + 1, err_msg)
                 return -1
+            file_str += "j++;\n"
 
     file_str += tab * 4 + "col = j ;\n"
+    file_str += tab * 4 + "m_kMapDatas[i] = new int[] {" + list_str + "};\n"
     file_str += tab * 3 + "}\n\n"
     file_str += tab * 3 + "return true;\n"
     file_str += tab * 2 + "}\n\n"
