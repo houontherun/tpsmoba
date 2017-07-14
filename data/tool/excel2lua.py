@@ -505,7 +505,7 @@ def scene_cs_load_file(tablename_en, table):
                     keys_row[index]) + ": " + str(type_row[index]) + tab + str(desc_row[index])
                 error_location(3, index + 1, err_msg)
                 return -1
-            file_str += "j++;\n"
+            file_str += tab * 4 + "j++;\n"
 
     file_str += tab * 4 + "col = j ;\n"
     file_str += tab * 4 + "m_kMapDatas[i] = new int[] {" + list_str + "};\n"
