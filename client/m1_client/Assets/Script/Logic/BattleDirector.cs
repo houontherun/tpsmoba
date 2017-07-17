@@ -6,16 +6,21 @@ public class BattleDirector : Object
     public static BattleDirector Instance { get { return instance;  } }
 
 
-    public GameObject hero;
+    public Character hero;
 
     public void Start ()
     {
         ResourceManager.CreateCharacter("FutureSoldier/FutureSoldier_01", CharacterLoadCallBack);
-	}
+    }
 	
-    void CharacterLoadCallBack(object go)
+    void CharacterLoadCallBack(object o)
     {
-        hero = go as GameObject;
-        hero.AddComponent<CameraController>().target_ = hero.transform;
+        var go = o as GameObject;
+        go.AddComponent<CameraController>().target_ = go.transform;
+        hero = go.GetComponent<Character>();
+        if (null == hero)
+        {
+            hero = go.AddComponent<Character>();
+        }
     }
 }

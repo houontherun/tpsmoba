@@ -6,7 +6,6 @@ using Table;
 using System.Reflection;
 using System.Threading;
 
-
 public class TableData 
 {
     public class LoadData
@@ -35,19 +34,21 @@ public class TableData
 
     public static void PreInit()
     {
-        pScene1TableInfo = AsyncLoadTable<Scene1TableConfig>();
-        pScene2TableInfo = AsyncLoadTable<Scene2TableConfig>();
+        pSceneTableInfo = AsyncLoadTable<S1TableConfig>();
+        pSceneEleTableInfo = AsyncLoadTable<ElementTableConfig>();
+        pDungeonTableInfo = AsyncLoadTable<DungeonTableConfig>();
     }
 
     public static void Init(Action kCallBack)
     {
+        if (m_kLoadData.Count > 1) return;
         PreInit();
-        Thread kThread = new Thread(new ParameterizedThreadStart(ThreadInit));
+        Thread kThread = new Thread(new ParameterizedThreadStart(TreadInit));
         kThread.Start(kCallBack);
         
     }
 
-    public static void ThreadInit(object param)
+    public static void TreadInit(object param)
     {
         Action kCallBack = (Action)param;
         LoadData kLoadData = null;
@@ -71,21 +72,31 @@ public class TableData
             kCallBack();
         }
     }
-    static Scene1TableConfig pScene1TableInfo = null;
-    public static Scene1TableConfig PScene1TableInfo
+
+    static S1TableConfig pSceneTableInfo = null;
+    public static S1TableConfig PSceneTableInfo
     {
         get
         {
-            return pScene1TableInfo;
+            return pSceneTableInfo;
         }
     }
 
-    static Scene2TableConfig pScene2TableInfo = null;
-    public static Scene2TableConfig PScene2TableInfo
+    static ElementTableConfig pSceneEleTableInfo = null;
+    public static ElementTableConfig PSceneEleTableInfo
     {
         get
         {
-            return pScene2TableInfo;
+            return pSceneEleTableInfo;
+        }
+    }
+
+    static DungeonTableConfig pDungeonTableInfo = null;
+    public static DungeonTableConfig PDungeonTableInfo
+    {
+        get
+        {
+            return pDungeonTableInfo;
         }
     }
 }
