@@ -53,7 +53,7 @@ public class GameManager : Manager
             Debug.Log("初始化GameManager");
             Create();
         }
-
+        TableData.Init(delegate() { Debug.Log("数据读取完毕.."); });
         IsGameStart = true;
         CanSyncMsg = true;
     }

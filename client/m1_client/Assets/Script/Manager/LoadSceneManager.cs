@@ -91,7 +91,6 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     {
 	    info.Progress = 0.99f;
         yield return new WaitForSeconds(.2f);//强行0.15秒
-        TableData.Init(delegate() { info.IsDone = true; });
 
     }
 
