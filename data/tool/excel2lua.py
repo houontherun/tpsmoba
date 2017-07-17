@@ -469,7 +469,7 @@ def scene_cs_load_file(tablename_en, table):
         print "页签没有ID"
         return -1
 
-    file_str += tab + "public class " + class_name + "Config\n"
+    file_str += tab + "public class " + class_name + "Config : SceneTableConfig\n"
     file_str += tab + "{\n"
     file_str += tab * 2 + "public string GetTableName()\n"
     file_str += tab * 2 + "{\n"
@@ -479,8 +479,8 @@ def scene_cs_load_file(tablename_en, table):
     file_str += tab * 2 + "public bool Load(string text)\n"
     file_str += tab * 2 + "{\n"
     file_str += tab * 3 + "JsonData jsonData = JsonMapper.ToObject(text);\n"
-    file_str += tab * 3 + "row = jsonData.Count;\n"
-    file_str += tab * 3 + "m_kMapDatas = new int[row][];\n"
+    file_str += tab * 3 + "Row = jsonData.Count;\n"
+    file_str += tab * 3 + "m_kMapDatas = new int[Row][];\n"
     file_str += tab * 3 + "for (int i = 0; i < jsonData.Count; i++)\n"
     file_str += tab * 3 + "{\n"
     file_str += tab * 4 + "int j = 0;\n"
@@ -507,26 +507,12 @@ def scene_cs_load_file(tablename_en, table):
                 return -1
             file_str += tab * 4 + "j++;\n"
 
-    file_str += tab * 4 + "col = j ;\n"
+    file_str += tab * 4 + "Col = j ;\n"
     file_str += tab * 4 + "m_kMapDatas[i] = new int[] {" + list_str + "};\n"
     file_str += tab * 3 + "}\n\n"
     file_str += tab * 3 + "return true;\n"
     file_str += tab * 2 + "}\n\n"
 
-    file_str += tab * 2 + "public int Row\n"
-    file_str += tab * 2 + "{\n"
-    file_str += tab * 3 + "get { return row; }\n"
-    file_str += tab * 2 + "}\n\n"
-
-    file_str += tab * 2 + "public int Col\n"
-    file_str += tab * 2 + "{\n"
-    file_str += tab * 3 + "get { return col; }\n"
-    file_str += tab * 2 + "}\n\n"
-
-
-    file_str += tab * 2 + "private int row = 0;\n"
-    file_str += tab * 2 + "private int col = 0;\n"
-    file_str += tab * 2 + "public int[][] m_kMapDatas;\n"
     file_str += tab + "}\n"
     file_str += "}\n"
 
