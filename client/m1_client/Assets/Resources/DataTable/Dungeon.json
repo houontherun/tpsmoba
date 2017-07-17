@@ -1,13 +1,15 @@
 { 
     "1" : { 
-        "Dungeon" : "S1",
-        "Playing" : "A",
+        "ID" : 1,
+        "Dungeon" : "Scene1",
+        "Playing" : 101,
         "BirthPoint1" : [18, 1, 17, 1, 19, 1],
         "BirthPoint2" : [18, 64, 17, 64, 19, 64]
     },
     "2" : { 
-        "Dungeon" : "S2",
-        "Playing" : "B",
+        "ID" : 2,
+        "Dungeon" : "Scene2",
+        "Playing" : 102,
         "BirthPoint1" : [18, 1, 17, 1, 19, 1],
         "BirthPoint2" : [18, 64, 17, 64, 19, 64]
     }
