@@ -2,6 +2,7 @@ import tps_message_pb2
 import const
 from network import send, create_rpc_data
 import timer
+import time
 
 
 room_index = {}
@@ -40,10 +41,15 @@ class fight_room(object):
             for player_uid, player_conn in self.conn_list.items():
                 send(player_conn, const.FUNC_NAME_TO_OPCODE["rpc_command"], msg)
 
+            def timer_callback():
+                self.broadcast_action_data()
+                print time.time()
+            self.room_timer = timer.create_timer(timer_callback, 1, -1)
 
     def game_end(self):
         for player_uid, player_conn in self.conn_list.items():
             del room_index[player_uid]
+        timer.remove_timer(self.room_timer)
 
 
     def broadcast_action_data(self):
@@ -61,4 +67,3 @@ class fight_room(object):
         action_data_copy.player_id = action_data.player_id
         action_data_copy.action_param = action_data.action_param
         self.order_list.append(action_data)
-        self.broadcast_action_data()
