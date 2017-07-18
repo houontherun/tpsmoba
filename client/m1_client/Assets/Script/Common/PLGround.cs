@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Table;
 
 public class PLGround : SingletonBehaviour<PLGround>
 {
@@ -32,10 +33,9 @@ public class PLGround : SingletonBehaviour<PLGround>
         return vReturn;
     }
 
-    public void Move(GameObject go, Vector2 tilePos)
+    public void Move( Vector2 tilePos)
     {
-        Move(go, tilePos, Vector2.one);
-
+        
         if (AStar.tiles != null)
         {
             int asx = SubGridSize * ((int)tilePos.x);
@@ -48,6 +48,9 @@ public class PLGround : SingletonBehaviour<PLGround>
                 }
             }
         }
+
+       // GameObject go = 
+      //  Move(go, tilePos, Vector2.one);
     }
 
     //考虑到可扩展性 tileSize参数表示元素占用格子大小
@@ -69,8 +72,16 @@ public class PLGround : SingletonBehaviour<PLGround>
        
     }
 
-    private void AddCellsGround()
+    public void AddCellsGround(int[][] Cells)
     {
+         for (int i = 0; i < Cells.Length; i++)  
+            {  
+                for (int j = 0; j < Cells[i].Length; j++)  
+                {
+                    ElementTable eTable = TableData.PSceneEleTableInfo.Get(Cells[i][j]);
+                    ResourceManager.CreateCharacter(eTable.ArtResource1);
+                }  
+            }   
 
     }
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using System.Reflection;
 using System.IO;
-
+using Table;
 
 public class GameManager : Manager
 {
@@ -106,5 +106,13 @@ public class GameManager : Manager
     public void Destroy()
     {
         //network_.Close();
+    }
+
+
+    public void LoadinScene(string ScnenName)
+    {
+        string SceneProperty = ScnenName + "TableInfo";
+        SceneTableConfig sTConfig = (SceneTableConfig)typeof(TableData).GetProperty(SceneProperty).GetValue(null, null);
+        PLGround.Instance.AddCellsGround(sTConfig.m_kMapDatas);
     }
 }

@@ -166,7 +166,7 @@ public class ObjectPoolSystem
             string ResName = ResDefine.GetResourceType(resType);
             string ResFolderName = ResName + "/";
             string abPath = string.Empty;
-            if (AppConst.PublishMode && resType != EResType.eSceneLoadRes)
+            if (AppConst.PublishMode)
             {
                 abName = string.Empty;
                 abPath = Path.GetDirectoryName(res);

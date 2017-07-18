@@ -27,6 +27,21 @@ public class ResourceManager : Manager
         CreateCharacter(res, 0, func);
     }
 
+    /// <summary>
+    /// 创建场景元素
+    /// </summary>
+    public static void CreateSceneElemt(string res, Action<UnityEngine.Object> func = null)
+    {
+        ObjectPoolManager.NewObject(res, EResType.eResSceneElemt, 0, 10, (Obj) =>
+        {
+            GameObject gObj = Obj as GameObject;
+            if (func != null)
+            {
+                func(gObj);
+            }
+        });
+    }
+
     public static void CreateEffect(string res, float timeToRecycle, float timeToDestroy, Action<UnityEngine.Object> func = null)
     {
         ObjectPoolManager.NewObject(res, EResType.eResEffect, timeToRecycle,timeToDestroy,(Obj) =>

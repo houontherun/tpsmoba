@@ -27,7 +27,7 @@ public enum EResType
     eResMaterial,       //材质球
     eResTexure,         //贴图 主要用于材质球
     eResDataTable,          //资源配置文件
-    eSceneLoadRes,          //场景中动态加载的物体
+    eResSceneElemt,          //场景元素
     eResCount,
 }
 
@@ -56,7 +56,7 @@ public class ResDefine
         kDictResPath[EResType.eResMaterial] = AppConst.ResourcePath + "/Materials";
 		kDictResPath[EResType.eResTexure] = AppConst.ResourcePath + "/Texture";
         kDictResPath[EResType.eResDataTable] = AppConst.ResourcePath + "/DataTable";
-        kDictResPath[EResType.eSceneLoadRes] = AppConst.ResourcePath + "/SceneLoadRes";
+        kDictResPath[EResType.eResSceneElemt] = AppConst.ResourcePath + "/SceneRes";
     }
 
     static public string GetResPath(EResType eResourceGroup)
@@ -104,8 +104,8 @@ public class ResDefine
 			    return "Texture";
             case EResType.eResDataTable:
                 return "DataTable";
-            case EResType.eSceneLoadRes:
-                return "SceneLoadRes";
+            case EResType.eResSceneElemt:
+                return "SceneRes";
         }
         return "";
     }
@@ -145,7 +145,7 @@ public class ResDefine
             case EResType.eResUI:
             case EResType.eResUIEffect:
             case EResType.eResModel:
-            case EResType.eSceneLoadRes:
+            case EResType.eResSceneElemt:
                 kExtList.Add("prefab");
                 break;
             case EResType.eResScene:
