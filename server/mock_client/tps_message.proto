@@ -1,0 +1,33 @@
+/////////////////////////////////////////////////////////////////////////
+
+// MSG_RPC_RUNREQUEST = 1;								// 执行RPC请求
+message CS_RPC_RunRequest{
+    required uint32 opcode = 1; // 信息编号
+    // RPC调用的参数, 不强制如何序列化，可以用BSON, protobuf, msgpack或者其他
+    optional bytes parameters = 2;
+};
+
+message SC_RPC_RunRequest{
+    required uint32 opcode = 1; // 信息编号
+    // RPC调用的参数, 不强制如何序列化，可以用BSON, protobuf, msgpack或者其他
+    optional bytes parameters = 2;
+};
+//////////////////////////////////////////////////////////////////////////
+
+message ActionData {
+    required uint32 action_id=1;
+    required uint32 action_type=2;
+    required string player_id=3;
+    required bytes action_param=4;       //msg_pack包装的战斗数据
+}
+
+//战斗数据
+message CS_Fight_Message{
+    required uint32 frame = 1;    //帧数
+    required ActionData action_data = 2;    //战斗数据
+};
+
+message SC_Fight_Message{
+    required uint32 frame = 1;    //帧数
+    repeated ActionData action_list = 2;    //战斗数据
+};
