@@ -34,7 +34,8 @@ public class TableData
 
     public static void PreInit()
     {
-        pSceneTableInfo = AsyncLoadTable<S1TableConfig>();
+        pScene1TableInfo = AsyncLoadTable<Scene1TableConfig>();
+        pScene2TableInfo = AsyncLoadTable<Scene2TableConfig>();
         pSceneEleTableInfo = AsyncLoadTable<ElementTableConfig>();
         pDungeonTableInfo = AsyncLoadTable<DungeonTableConfig>();
     }
@@ -71,14 +72,26 @@ public class TableData
         {
             kCallBack();
         }
+
+       // SceneTableConfig sTConfig = (SceneTableConfig)typeof(TableData).GetProperty("Scene2TableInfo").GetValue(null, null);
+        //int st = sTConfig.m_kMapDatas[1][1];
     }
 
-    static S1TableConfig pSceneTableInfo = null;
-    public static S1TableConfig PSceneTableInfo
+    static Scene1TableConfig pScene1TableInfo = null;
+    public static Scene1TableConfig Scene1TableInfo
     {
         get
         {
-            return pSceneTableInfo;
+            return pScene1TableInfo;
+        }
+    }
+
+    static Scene2TableConfig pScene2TableInfo = null;
+    public static Scene2TableConfig Scene2TableInfo
+    {
+        get
+        {
+            return pScene2TableInfo;
         }
     }
 

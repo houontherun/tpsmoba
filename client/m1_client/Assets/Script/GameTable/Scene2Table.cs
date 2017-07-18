@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace Table
 {
-    public class Scene2TableConfig
+    public class Scene2TableConfig : SceneTableConfig
     {
-        public string GetTableName()
+        public override string GetTableName()
         {
             return "Scene2";
         }
 
-        public bool Load(string text)
+        public override bool Load(string text)
         {
             JsonData jsonData = JsonMapper.ToObject(text);
-            row = jsonData.Count;
-            m_kMapDatas = new int[row][];
+            Row = jsonData.Count;
+            m_kMapDatas = new int[Row][];
             for (int i = 0; i < jsonData.Count; i++)
             {
                 int j = 0;
@@ -71,25 +71,12 @@ namespace Table
                 JsonData tempX17 = data["X17"];
                 int iX17 = int.Parse(tempX17.ToString());
                 j++;
-                col = j ;
+                Col = j ;
                 m_kMapDatas[i] = new int[] {iX1, iX2, iX3, iX4, iX5, iX6, iX7, iX8, iX9, iX10, iX11, iX12, iX13, iX14, iX15, iX16, iX17, };
             }
 
             return true;
         }
 
-        public int Row
-        {
-            get { return row; }
-        }
-
-        public int Col
-        {
-            get { return col; }
-        }
-
-        private int row = 0;
-        private int col = 0;
-        public int[][] m_kMapDatas;
     }
 }
