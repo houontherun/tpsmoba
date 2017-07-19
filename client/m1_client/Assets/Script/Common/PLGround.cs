@@ -4,24 +4,32 @@
 ** desc： 地面网格数据管理。
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Table;
 
-public class PLGround : SingletonBehaviour<PLGround>
+public class PLGround : MonoBehaviour
 {
+    public static PLGround Instance;
     public Transform plCellRoot = null;
     private Vector2 UnitSize = Vector2.one;
     private Vector3 plOriginRoot = new Vector3(0,0,0);
     private Vector2 GridSize;
     public int SubGridSize = 2;	//用于A*寻路的子网格
-    public PLAStar AStar;	
+    private PLAStar AStar;	
     private Dictionary<Vector2, Cell> Cells = new Dictionary<Vector2, Cell>();
 
-	public void Init()
+    void Awake()
     {
+        Instance = this;
+    }
+    public void Init(int col, int row)
+    {
+        GridSize = new Vector2(col, row);
         Cells.Clear();
+        AStar = gameObject.GetComponent<PLAStar>();
         AStar.Init((int)GridSize.x * SubGridSize, (int)GridSize.y * SubGridSize, 1.0f / (float)SubGridSize);
     }
 
@@ -33,7 +41,7 @@ public class PLGround : SingletonBehaviour<PLGround>
         return vReturn;
     }
 
-    public void Move( Vector2 tilePos)
+    public void Move(GameObject go, Vector2 tilePos)
     {
         
         if (AStar.tiles != null)
@@ -49,8 +57,8 @@ public class PLGround : SingletonBehaviour<PLGround>
             }
         }
 
-       // GameObject go = 
-      //  Move(go, tilePos, Vector2.one);
+        Move(go, tilePos, Vector2.one);
+
     }
 
     //考虑到可扩展性 tileSize参数表示元素占用格子大小
@@ -68,6 +76,7 @@ public class PLGround : SingletonBehaviour<PLGround>
             localPos.z = sPos.y + (int)(tilePos.y + 0.5f) * UnitSize.y;
             go.transform.position = localPos;
             go.transform.rotation = transform.rotation;
+            go.transform.SetParent(plCellRoot);
         }
        
     }
@@ -78,8 +87,17 @@ public class PLGround : SingletonBehaviour<PLGround>
             {  
                 for (int j = 0; j < Cells[i].Length; j++)  
                 {
-                    ElementTable eTable = TableData.PSceneEleTableInfo.Get(Cells[i][j]);
-                    ResourceManager.CreateCharacter(eTable.ArtResource1);
+                    if(Cells[i][j]!=0)
+                    {
+                        ElementTable eTable = TableData.PSceneEleTableInfo.Get(Cells[i][j]);
+                        ResourceManager.CreateSceneElemt(eTable.ArtResource1, delegate(UnityEngine.Object obj)
+                        {
+                            GameObject go = obj as GameObject;
+                            Move(go, new Vector2(i, j));
+                        });
+                         
+                    }
+                    
                 }  
             }   
 

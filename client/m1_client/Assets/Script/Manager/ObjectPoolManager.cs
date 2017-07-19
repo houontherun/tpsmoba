@@ -180,41 +180,32 @@ public class ObjectPoolSystem
                     abName = ResFolderName + abPath + ResDefine.ExtName;
                 }
                 resName = Path.GetFileName(res);
-                AppFacade.Instance.GetManager<AssetsLoaderManager>(ManagerName.AssetsLoader).LoadAsset(abName, resName, delegate(UnityEngine.Object[] uObj)
+                obj = AppFacade.Instance.GetManager<AssetsLoaderManager>(ManagerName.AssetsLoader).LoadAsset<UnityEngine.Object>(abName, resName);
+                if (obj == null)
                 {
-                    if (uObj == null || uObj[0] == null)
-                    {
-                        UnityEngine.Debug.LogWarning("LoadAsset failed abpath:" + abName);
-                        UnityEngine.Debug.LogWarning("LoadAsset failed abName:" + resName);
-                    }
-                    else
-                    {
-                        retObj = NewObject(res,uObj[0], timeToRecycle, timeToDestory);
-                           if (func != null) func(retObj);
-                           if (!kLoadedPrefabs.ContainsKey(res))
-                               kLoadedPrefabs.Add(res, retObj);
-                    }
+                    UnityEngine.Debug.LogWarning("LoadAsset failed abpath:" + abName);
+                    UnityEngine.Debug.LogWarning("LoadAsset failed abName:" + resName);
                 }
-                );
+                retObj = NewObject(res, obj, timeToRecycle, timeToDestory);
+                if (func != null) func(retObj);
+                if (!kLoadedPrefabs.ContainsKey(res))
+                    kLoadedPrefabs.Add(res, retObj);
             }
             else
             {
                 if (obj == null)
                 {
                     abPath = ResFolderName + res;
-                   // obj = Resources.Load(abPath);
-                    AppFacade.Instance.GetManager<AssetsLoaderManager>(ManagerName.AssetsLoader).LoadRes(abPath, delegate(UnityEngine.Object uObj)
+                    obj = Resources.Load(abPath);
+                    if (obj == null)
                     {
-                        if (uObj == null)
-                        {
-                            UnityEngine.Debug.LogWarning("LoadAsset failed abpath:" + abName);
-                            UnityEngine.Debug.LogWarning("LoadAsset failed abName:" + resName);
-                        }
-                        retObj = NewObject(res, uObj, timeToRecycle, timeToDestory);
-                        if (func != null) func(retObj);
-                        if (!kLoadedPrefabs.ContainsKey(res))
-                            kLoadedPrefabs.Add(res, retObj);
-                    });
+                        UnityEngine.Debug.LogWarning("LoadAsset failed abpath:" + abName);
+                        UnityEngine.Debug.LogWarning("LoadAsset failed abName:" + resName);
+                    }
+                    retObj = NewObject(res, obj, timeToRecycle, timeToDestory);
+                    if (func != null) func(retObj);
+                    if (!kLoadedPrefabs.ContainsKey(res))
+                        kLoadedPrefabs.Add(res, retObj);
                    
                 }
                

@@ -16,7 +16,9 @@ public  class MainScreenUI : MonoBehaviour
 
     void EnterGame(PointerEventData e)
     {
-        LoadSceneManager.Instance().LoadScene("Combat01", () => { BattleDirector.Instance.Start(); });
+        LoadSceneManager.Instance().LoadScene("Combat01", () => {
+            AppFacade.Instance.GetManager<GameManager>(ManagerName.Game).LoadinScene("Scene1");
+            BattleDirector.Instance.Start(); });
     }
 }
 

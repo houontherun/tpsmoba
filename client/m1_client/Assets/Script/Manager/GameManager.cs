@@ -113,6 +113,8 @@ public class GameManager : Manager
     {
         string SceneProperty = ScnenName + "TableInfo";
         SceneTableConfig sTConfig = (SceneTableConfig)typeof(TableData).GetProperty(SceneProperty).GetValue(null, null);
+        PLGround.Instance.transform.localScale = new Vector3(sTConfig.Col / 10f, 1f, sTConfig.Row / 10f);
+        PLGround.Instance.Init(sTConfig.Col, sTConfig.Row);
         PLGround.Instance.AddCellsGround(sTConfig.m_kMapDatas);
     }
 }
